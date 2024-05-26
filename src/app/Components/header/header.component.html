@@ -1,19 +1,15 @@
-<p>header works!</p>
-
 <!-- NO AUTH REQUIRED -->
 <div *ngIf="showNoAuthSection">
-  <button (click)="dashboard()">Dashboard</button>
-  <button (click)="home()">Home</button>
-  <button (click)="login()">Login</button>
-  <button (click)="register()">Register</button>
+  <button id="home-menu-item" (click)="navigateTo('home')">Home</button>
+  <button id="login-menu-item" (click)="navigateTo('login')">Login</button>
+  <button id="register-menu-item" (click)="navigateTo('register')">Register</button>
 </div>
 
 <!-- AUTH REQUIRED -->
-<div *ngIf="showAuthSection">
-  <button (click)="dashboard()">Dashboard</button>
-  <button (click)="home()">Home</button>
-  <button (click)="adminPosts()">Admin posts</button>
-  <button (click)="adminCategories()">Admin categories</button>
-  <button (click)="profile()">Profile</button>
-  <button (click)="logout()">Logout</button>
+<div class="menu-item" *ngIf="showAuthSection">
+  <button id="home-menu-item" (click)="navigateTo('home')">Home</button>
+  <button id="posts-menu-item" (click)="navigateTo('posts')">Posts</button>
+  <button id="categories-menu-item" (click)="navigateTo('categories')">Categories</button>
+  <button id="profile-menu-item" (click)="navigateTo('profile')">Profile</button>
+  <button id="logout-menu-item" (click)="logout()">Logout</button>
 </div>

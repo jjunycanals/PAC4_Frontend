@@ -1,3 +1,19 @@
+# Indicacions PAC 4
+  Exercici 1 - Fet
+  Exercici 2 - Fet
+  Exercici 3 - Fet
+  Exercici 4 - Fet
+  Exercici 5 - Fet amb part del codi comentat i amb explicació. Falta veure el cas d'autenticació que es mostrin els elements que toca, fallen 2 test i els he deixat comentats. Es un tema de resoldre el servei de auth.
+
+
+# REPO
+git init 
+git add README.md 
+git commit -m "first commit" 
+git branch -M main 
+git remote add origin https://github.com/jjunycanals/PAC4_Frontend.git 
+git push -u origin main
+
 # BlogUocProjectFront
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.5.

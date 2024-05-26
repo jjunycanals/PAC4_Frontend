@@ -26,9 +26,10 @@ export class CategoriesListComponent {
     this.loadCategories();
   }
 
-  private loadCategories(): void {
+  public loadCategories(): void {
     let errorResponse: any;
-    const userId = this.localStorageService.get('user_id');
+    let userId = this.localStorageService.get('user_id');
+
     if (userId) {
       this.categoryService.getCategoriesByUserId(userId).subscribe(
         (categories: CategoryDTO[]) => {
@@ -43,11 +44,11 @@ export class CategoriesListComponent {
   }
 
   createCategory(): void {
-    this.router.navigateByUrl('/user/category/');
+    this.router.navigateByUrl('/create-category');
   }
 
   updateCategory(categoryId: string): void {
-    this.router.navigateByUrl('/user/category/' + categoryId);
+    this.router.navigateByUrl(`/update-category/${categoryId}`);
   }
 
   deleteCategory(categoryId: string): void {

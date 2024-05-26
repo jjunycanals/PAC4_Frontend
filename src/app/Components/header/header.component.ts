@@ -10,6 +10,7 @@ import { LocalStorageService } from 'src/app/Services/local-storage.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+
   showAuthSection: boolean;
   showNoAuthSection: boolean;
 
@@ -19,7 +20,7 @@ export class HeaderComponent implements OnInit {
     private localStorageService: LocalStorageService
   ) {
     this.showAuthSection = false;
-    this.showNoAuthSection = true;
+    this.showNoAuthSection = !this.showAuthSection;
   }
 
   ngOnInit(): void {
@@ -33,38 +34,60 @@ export class HeaderComponent implements OnInit {
     );
   }
 
-  dashboard(): void {
-    this.router.navigateByUrl('dashboard');
+  navigateTo(route: string):void {
+    this.router.navigateByUrl(route);
   }
 
-  home(): void {
-    this.router.navigateByUrl('home');
-  }
+  // dashboard(): void {
+  //   this.router.navigateByUrl('dashboard');
+  // }
+
+  // home(): void {
+  //   this.router.navigateByUrl('home');
+  // }
+
+  // login(): void {
+  //   this.router.navigateByUrl('login');
+  // }
+
+  // register(): void {
+  //   this.router.navigateByUrl('register');
+  // }
+
+  // adminPosts(): void {
+  //   this.router.navigateByUrl('posts');
+  // }
+
+  // adminCategories(): void {
+  //   this.router.navigateByUrl('categories');
+  // }
+
+  // profile(): void {
+  //   this.router.navigateByUrl('profile');
+  // }
 
   login(): void {
-    this.router.navigateByUrl('login');
-  }
 
-  register(): void {
-    this.router.navigateByUrl('register');
-  }
+    this.showAuthSection = true;
+    this.showNoAuthSection = false;
+    const headerInfo: HeaderMenus = {
+      showAuthSection: true,
+      showNoAuthSection: false,
+    };
+    this.headerMenusService.headerManagement.next(headerInfo);
 
-  adminPosts(): void {
-    this.router.navigateByUrl('posts');
-  }
-
-  adminCategories(): void {
-    this.router.navigateByUrl('categories');
-  }
-
-  profile(): void {
-    this.router.navigateByUrl('profile');
+    // Guarda l'estat de l'autenticació a localStorage
+    this.localStorageService.set('access_token', 'some_token');
   }
 
   logout(): void {
+    // Elimino les dades d'autenticació de localStorage
     this.localStorageService.remove('user_id');
     this.localStorageService.remove('access_token');
 
+    // Actualitza els valors de showAuthSection i showNoAuthSection
+    this.showAuthSection = false;
+    this.showNoAuthSection = true;
     const headerInfo: HeaderMenus = {
       showAuthSection: false,
       showNoAuthSection: true,

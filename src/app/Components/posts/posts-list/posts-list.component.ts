@@ -23,7 +23,7 @@ export class PostsListComponent {
     this.loadPosts();
   }
 
-  private loadPosts(): void {
+  public loadPosts(): void {
     let errorResponse: any;
     const userId = this.localStorageService.get('user_id');
     if (userId) {

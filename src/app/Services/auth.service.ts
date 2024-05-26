@@ -27,4 +27,13 @@ export class AuthService {
       .post<AuthToken>(this.urlBlogUocApi, auth)
       .pipe(catchError(this.sharedService.handleError));
   }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('access_token');
+  }
+
+  logout(): void {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user_id');
+  }
 }
